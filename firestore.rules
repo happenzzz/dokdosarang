@@ -1,0 +1,27 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function teacher() { return signedIn() && 'email_verified' in request.auth.token && request.auth.token.email_verified == true && request.auth.token.email in ['happenz@naver.com', 'daesin24841@gmail.com']; }
+    match /museums/dokdo-ullim-museum-v1 {
+      allow read: if signedIn();
+      allow write: if teacher();
+      match /students/{uid} {
+        allow read: if signedIn();
+        allow create, update: if teacher() || (signedIn() && uid == request.auth.uid && request.resource.data.uid == request.auth.uid && request.resource.data.name is string && request.resource.data.name.size() <= 40);
+        allow delete: if teacher() || (signedIn() && uid == request.auth.uid);
+      }
+      match /exhibits/{id} {
+        allow read: if signedIn();
+        allow create: if signedIn() && request.resource.data.ownerUid == request.auth.uid && request.resource.data.title is string && request.resource.data.title.size() <= 200 && request.resource.data.desc.size() <= 1500 && request.resource.data.roomId in [1,2,3,4,5] && request.resource.data.featured == false && request.resource.data.published == true;
+        allow update: if teacher() || (signedIn() && resource.data.ownerUid == request.auth.uid && request.resource.data.ownerUid == request.auth.uid && request.resource.data.featured == resource.data.featured && request.resource.data.published == resource.data.published);
+        allow delete: if teacher() || (signedIn() && resource.data.ownerUid == request.auth.uid);
+      }
+      match /messages/{id} {
+        allow read: if signedIn();
+        allow create: if signedIn() && request.resource.data.keys().hasOnly(['name','text','ownerUid','createdAtMs']) && request.resource.data.ownerUid == request.auth.uid && request.resource.data.text is string && request.resource.data.text.size() > 0 && request.resource.data.text.size() <= 120 && request.resource.data.name.size() <= 40 && request.resource.data.createdAtMs is number;
+        allow update, delete: if teacher();
+      }
+    }
+  }
+}
