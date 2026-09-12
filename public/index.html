@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta name="dokdo-build" content="20260911-chat-bubbles">
+<meta name="dokdo-build" content="20260912-cloudflare-realtime">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#173d56">
@@ -114,8 +114,8 @@
   </div>
 </div>
 
-<!-- 기존 Firebase 백엔드 코드는 game.js 안에 보존되어 있습니다.
-     Cloudflare 전환 단계에서 Codex가 Durable Objects / D1 / R2 API로 교체할 수 있도록 구조를 분리했습니다. -->
+<!-- 접속자·캐릭터 위치·채팅은 Cloudflare Durable Objects WebSocket을 사용합니다.
+     전시·학생·설정·첨부용 Firebase 코드는 다음 전환 단계까지 game.js에 보존합니다. -->
 <script src="/game.js" defer></script>
 </body>
 </html>

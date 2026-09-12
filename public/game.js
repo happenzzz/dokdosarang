@@ -11,10 +11,12 @@ var MAX_FILE_BYTES=25*1024*1024;
 var MAP_W=1672, MAP_H=941;
 var MASK_W=256, MASK_H=144;
 var MASK_B64="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/////+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//////+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH/////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH//////////gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///////////gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//8AAAB/////AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAP//wAAAH/////AAHAAAAAAAAAAAIAAAAAAP/gAAAAAA///AAAAf8AP/+AA+AAAAAAAAAAAgAAAAAH///gAAAAD//8AAAB/wA//8AD+AAAAAAAAAAeAAAAAB/////gAAAP//wAAAH//D//8AP8AAAAAAAAA/+AAAAAf//////gAA///AAAAf/////4Af8AAAAAAAAH/+AAAAP////////gD//8AAAB//////wA/4AAAAAAAAf//AAAD////////+AP//wAAA///////wB/wAAAAAAAB//+AAA/////////4A///AAAf///////gH/gAAAAAAAD//4AAf/////////gDwAAAAH////////AP/AAAAAAAAP/+AAH/////////+APAAD///////////Af8AAAAAAAA//wAAf/////////8AcAAP//////////+A/wAAAAAAAH/+AAB////AAAAA/wBwAA///////4P//wA/AAAAAAAA//wAAH///8AAAAD/AHAAD///////A//+AB+AAAAAAAH/+AAAf///wAAAAP8AcAAP/4AAB/+D//wAH4AAAAAAB//wAAB////AAAAA/wBwAA//gAAH////+AA/wAAAAAAf/+AAAH///8AAAAD/AHAAD/8AAAf////wAD/AAAAAAD//4AAAAP//wAAAAP8AcAAP/wAAD////+AAP+AAAAAAP//gAAAA///AAAAA/wBwAA//AAAP////wAA/+cAAAAB//+AAAAD//8AAAAD/AH////8AAB////+AAf//wAAAAP//AAAAAf//wAAAAP+Af////wAAP////wAH///AAAAB+/4AAAAD///AAAAA/4B/////AAD/////AA///wBwAAPz/gAAAAf//8AAAAAAAH////8AB/////+Af///4HgAB/H+AAAAD/4PxAAAAAAAH////wAP/////wH////8eA+P//4AAAAP/gf+AAAAAAAD////AD///////////////////gAAAA/+A/8AAAAAAAD///8A//3////////////////+AAAAD/4Af4AAAAAAADgA////8f8H//////////////4AACAH/gAPwAAAAAAAAAB/////8A///////////////gAA+Af+AAfwAAAAAAAAAB////8AB///////////////gAP8B/4AB///+AAAAAAAB///4AAH///////////////4D/8P/8AB///4AAAAAAAH//4AAAf///////////////w//5//8AD///gAAAAAAAf/4AAAP///////////////////////AH//+AAAAAAAAAAAAAA////////////////////////AP//4AAAAAAAAAAAAAD/////////////////f//////////gAAAAAAAAAAAAAf////////////////+//////////+AAAAAAAAAAAAAH/////////////////9///v//////4AAAAAAAAAAAAA//////////////////5///n//////gAAAAAAAAAAAAD//////////////////z//4D//////AAAAAAAAAAAAAD/////////////////////gD/////8QAAAAAAAAAAAAD////////////////////+AD/////4AAAAAAAAAAAAAH////////////////////4AD///D/wAAAAAAAAAAAAAH////////////////////wAD//AH/gAAAAAAAAIAAAAH///////////////////nwAD8AAP+AAAAAAAAf4AAAAH///////////////////HgADwAAf8AAAAAAA//8AAAAP///////////////////GAADAAA/wAAAAAA///8AAAAP//////////////////8AAAAAAB/AAAAAB////+AAAAP//////////////////AAAAAAAB4AAAAAAAAAP+AAAAf/////////////////wAAAAAAABgAAAAAAAAA//AAAAf////////////////8AAAAAAAAAAAAAAAAAAD//AAAAf////////////////AAAAAAAAAAAAAAAAAAAP//gAAAf///////////////wAAAAAAAAAAAABgAAAAA///gAAAP//////////////8AAAAAAAAAAAAAeAAAAAD///wAAAf//////////////AAAAAAAAAAAAAP4AAAAAP///wAAB//////////////gAAAAAAAAAAAAD/gAAAAA////gAAH/////////////4AAAAAACAAAAAAP+AAAAAP////gAAf////////////+AAAAAAf/AAAAAA/4AAAAP/////ggB/////////////gAAAAD///gAAAAD/gAAAD//////HgH////////////4AAAAf////gAAAAP+AAAAf///////wf////////////AAAD//////wAAAA/4AAAD////////x////////////+AAA///////wAAAD/gAAD8Bg//////3////////////+AAH///////AAAAP+AAA+AAB///////////////////8AB///////8AAAA/4AAPgAAB///////////////////8Af///////wAAAB////+AAAB///////////////////4D////////AAAAAAA//4AAAD///v///////////////4////////8AAAAAAD//gAAAH//+H///////////////3////////wAAAAAAP//AAAAH//4P///////////8//////////////8AAAA//8AAAAP//g/n//////////x//////////////wAAAD//wAAAAf/+D8f/////////+B///wH//B//////AAAAP//AAAAB//8Ph//////////8D///A/+AH/////8AAAA//8AAAAH//w+H+f//////7/wH//8H/gAf/////4AAAD//4AAAA///D4/4H/////8H/gH//z/yAB//////gAAAP//wAAAD////j/AH/////gH+AP+f//IAH/////+AAAA///AAAAB/////8AP////wAf8Af9//8AAf/////4AAAD//8AAAAH/////gAP///+AAfwAd3//gAB//////wAAAAP/4AAAB/////8AAf///wAB/AD///gAAH//////AAD/AQ/gAACP/////gAA///+AAH8Af//mAAAf/////8AAD8AB/AAAb/////+AAB///4AAfwH//4AAABf/////wAADwAB8AAH/44D//wAAH///gAB/Af//AAAAB//////gAAHAAH8AD/+AAD//AAAf//+AAH8D//8AAAAH7////+AAAEAAP////gAAAf4AAB///4AAfwf//wAAAA/H////4AAAAAA////8AAAAfwAAH///gAB/////gAAAH8f////gAAAAAD////gAAAB/AAAf//+AAH/////AAAAfh/////AAAAAAP////AAAAH+AAB///4AA/////+AAAH8GP///8AAAAAAH///8AAAAP8AAH///gAD/////+AAA/gYf///AAAAAAAH//9gAAAA/4AAf//+AAP//h//+AAH8Dh///wAAAAAAD//+AAAAAB/gAA///4AA+P+D//8AA/gcH//+AAAAAAAAf/AAAAAAD/AAAf//AAB8/4H//4Af8Bg///gAAAAAAAB/4AAAAAAP+AAB//4AAH//AP/////gAP//4AAAAAAAADAAAAAAAAf8AAH//gAAf/8A/////8AH//+AAAAAAAAAAAAAAAAAAP4AAf/+AAB//gB/////gB///gAAAAAAAAAAAAAAAAAA/gAB//wAAH/8AD////4A///4AAAAAAAAAAAAAAAAAAB8AAH//AAAP4AAH///8AH///AAAAAAAAAAAAAAAAAAABgAAf/8AAAeAAAf//8AB///wAAAAAAAAAAAAAAAAAAAAAAB//wAAAAAAA///wAf//8AAAAAAAAAAAAAAAAAAAAAAAH//AAAAAAAA////////AAAAAAAAAAAAAAAAAAAAAAAA//+AAAAAAAAf//////wAAAAAAAAAAAAAAAAAAAAAAAD//4AAAAAAAAf/////8AAAAAAAAAAAAAAAAAAAAAAAAP//gAAAAAAAAf/////AAAAAAAAAAAAAAAAAAAAAAAAA//+AAAAAAAAAP////4AAAAAAAAAAAAAAAAAAAAAAAAD//4AAAAAAAAAP///+AAAAAAAAAAAAAAAAAAAAAAAAAP//gAAAAAAAAAP///wAAAAAAAAAAAAAAAAAAAAAAAAB//+AAAAAAAAAAP//4AAAAAAAAAAAAAAAAAAAMAAAAAH//4AAAAAAAAAAH/+AAAAAAAAAAAAAAAAAAAB4AAAAAP//gAAAAAAAAAAH/gAAAAAAAAAAAAAAAAAAP/4AAAAA//+AAAAAHgAAAAD4AAAAAAAAAAAAAAAAAAH//4AAAAD//4AAAAB+AAAAACAAAAAAAAAAAAAAAAAAB///4AAAAP//gAAAAf+AAAAAAAAAAAAAAAAAAAAAAAAf///wAAAA///AAAAD/4AAAAAAAAAAAAAAAAAAAAAAAH////wAAAD///AAAA//wAAAAAAAAAAAAAAAAAAAAAAA//////8P///////////gAAAAAAAAAAAAAAAAAAAAAAD///////////////////gAAAAAAAAAAAAAAAAAAAAAAH//////////////////+AAAAAAAAAAAAAAAAAAAAAAAf//////////////////4AAAAAAAAAAAAAAAAAAAAAAAP//////////////////wAAAAAAAAAAAAAAAAAAAAAAD////////////v//////AAAAAAAAAAAAAAAAAAAAAAAf////wAAA///4AAAf//+AAAAAAAAAAAAAAAAAAAAAAD///////////////////8AAAAAAAAAAAAAAAAAAAAAAf///////////////////4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
-var PRESENCE_MIN_INTERVAL=200;      // 이동 동기화 최소 간격
+var PRESENCE_MIN_INTERVAL=100;      // WebSocket 이동 동기화 최소 간격
 var PRESENCE_MOVE_EPS=0.04;           // 이만큼 움직여야 기록 (비용 절감)
 var PRESENCE_HEARTBEAT=20000;
 var PRESENCE_TTL=90000;
+var REALTIME_PLAYER_KEY="dokdoUllimRealtimePlayer_v1";
+var REALTIME_RECONNECT_MAX=10000;
 var EMBEDDED=window.DOKDO_EMBEDDED_ASSETS||{};
 
 var ROOM_LIST=[
@@ -84,10 +86,9 @@ var currentRoomId=1, modalState=null, nearestRoom=null, guidedRoomId=0;
 var toastTimer=0, presenceTimer=0, heartbeatTimer=0, lastPresenceWrite=0, lastPresencePos={x:-99,y:-99};
 var lastBumpAt=0;
 var SESSION_ID="tab-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,12);
-var presenceRef=null, presenceConnected=false, presenceDisconnect=null, serverOffset=0;
-var presenceUnsubs=[], presenceGeneration=0, presencePaused=false;
-var OWN_UIDS=new Set();
-var chatBubbles=new Map(), chatSeenIds=new Set(), chatEnteredAt=Date.now(), chatDeleteBusy=false;
+var PLAYER_ID=loadRealtimePlayerId(), presenceConnected=false, serverOffset=0;
+var realtime={socket:null,connected:false,joined:false,id:PLAYER_ID,generation:0,retryTimer:0,retries:0,manualClose:false,error:"",sequence:0};
+var chatBubbles=new Map(), chatSeenIds=new Set(), chatDeleteBusy=false;
 var CHAT_BUBBLE_MS=5000;
 
 var overlay=$("#overlay"), avatarEl=$("#avatar"), avatarBody=$("#avatarBody"),
@@ -509,6 +510,16 @@ function esc(v){return String(v==null?"":v).replace(/[&<>'"]/g,function(c){retur
 function assetUrl(p){return EMBEDDED[p]||p}
 function safeUrl(v){try{var u=new URL(String(v||""),location.href);return /^(https?:|blob:|data:image\/)/.test(u.protocol)?u.href:""}catch(e){return ""}}
 function uid(p){return (p||"id")+Math.random().toString(36).slice(2,9)+Date.now().toString(36).slice(-5)}
+function loadRealtimePlayerId(){
+  try{
+    var saved=localStorage.getItem(REALTIME_PLAYER_KEY);
+    if(saved&&/^[a-zA-Z0-9_-]{8,96}$/.test(saved))return saved;
+    var id="player-"+(window.crypto&&crypto.randomUUID?crypto.randomUUID():uid("client-"));
+    localStorage.setItem(REALTIME_PLAYER_KEY,id);
+    return id;
+  }catch(e){return "player-"+uid("client-")}
+}
+function ownRealtimeId(){return realtime.id||PLAYER_ID}
 function roomById(id){return ROOM_LIST.find(function(r){return r.id===Number(id)})}
 function exhibitById(id){return visibleExhibits().find(function(i){return String(i.id)===String(id)})}
 function visibleExhibits(){return state.exhibits.length?state.exhibits:SAMPLE_EXHIBITS}
@@ -524,7 +535,7 @@ function setSyncStatus(kind,text,err){
   var el=$("#syncBadge");
   el.className="sync-badge"+(kind?" "+kind:"");
   el.textContent=text;
-  cloud.error=err?(err.message||String(err)):"";
+  realtime.error=err?(err.message||String(err)):"";
 }
 function loadLocalData(){try{return JSON.parse(localStorage.getItem(LOCAL_KEY)||"{}")||{}}catch(e){return {}}}
 function saveLocalData(){
@@ -619,16 +630,12 @@ function activePresence(){
   var seenUid=new Set(), rows=[];
   state.presence.forEach(function(p){
     if(!p||!p.name||now-(Number(p.lastSeenMs)||0)>=PRESENCE_TTL)return;
-    // 익명 계정을 교사 계정으로 전환하면 이전 UID 문서가 잠시 남을 수 있습니다.
-    // 같은 탭의 세션 또는 이 탭이 사용했던 UID는 내 분신으로 그리지 않습니다.
-    if((p.sessionId&&p.sessionId===SESSION_ID&&p.uid!==cloud.uid)||
-       (profile.studentId&&p.studentId===profile.studentId&&p.uid!==cloud.uid)||
-       (OWN_UIDS.has(p.uid)&&p.uid!==cloud.uid))return;
+    if(p.sessionId&&p.sessionId===SESSION_ID&&p.uid!==ownRealtimeId())return;
     if(seenUid.has(p.uid))return;
     seenUid.add(p.uid); rows.push(p);
   });
-  if(!rows.some(function(p){return p.uid===cloud.uid})&&profile.name){
-    rows.push({uid:cloud.uid||"me",sessionId:SESSION_ID,name:profile.name,group:profile.group,avatar:profile.avatar,x:pos.x,y:pos.y,lastSeenMs:now});
+  if(!rows.some(function(p){return p.uid===ownRealtimeId()})&&profile.name){
+    rows.push({uid:ownRealtimeId(),sessionId:SESSION_ID,name:profile.name,group:profile.group,avatar:profile.avatar,x:pos.x,y:pos.y,lastSeenMs:now});
   }
   return rows;
 }
@@ -640,13 +647,12 @@ function renderPresence(){
     var bg=spriteBg(p.avatar);
     return '<div class="online-row"><span class="mini" style="'+(bg||"background:#e3ecf1;border-radius:5px")+'"></span>'+
       '<span>'+esc(p.name)+(p.group?' <small style="color:#7b8f9b">'+esc(p.group)+'모둠</small>':'')+
-      (p.uid===cloud.uid?' <small style="color:#1d8fae">(나)</small>':'')+'</span></div>';
+      (p.uid===ownRealtimeId()?' <small style="color:#1d8fae">(나)</small>':'')+'</span></div>';
   }).join("")||'<div class="online-row">아직 접속자가 없습니다.</div>';
 
   var seen=new Set();
   rows.forEach(function(p){
-    if(!p.uid||p.uid===cloud.uid||p.sessionId===SESSION_ID||
-       (profile.studentId&&p.studentId===profile.studentId)||OWN_UIDS.has(p.uid))return;
+    if(!p.uid||p.uid===ownRealtimeId()||p.sessionId===SESSION_ID)return;
     seen.add(p.uid);
     var node=remoteNodes.get(p.uid);
     if(!node){
@@ -725,7 +731,7 @@ function removeChatBubble(id){
   chatBubbles.forEach(function(b,owner){
     if(b.id!==id)return;
     clearTimeout(b.timer);chatBubbles.delete(owner);
-    var el=owner===cloud.uid?avatarEl:(remoteNodes.get(owner)||{}).el;
+    var el=owner===ownRealtimeId()?avatarEl:(remoteNodes.get(owner)||{}).el;
     if(el){var node=el.querySelector(".speech-bubble");if(node&&node.dataset.messageId===id)node.remove()}
   });
 }
@@ -738,25 +744,15 @@ function showChatBubble(msg){
   var b={id:msg.id,text:String(msg.text).slice(0,120),until:Date.now()+CHAT_BUBBLE_MS};
   chatBubbles.set(msg.ownerUid,b);
   b.timer=setTimeout(function(){removeChatBubble(msg.id)},CHAT_BUBBLE_MS);
-  var el=msg.ownerUid===cloud.uid?avatarEl:(remoteNodes.get(msg.ownerUid)||{}).el;
+  var el=msg.ownerUid===ownRealtimeId()?avatarEl:(remoteNodes.get(msg.ownerUid)||{}).el;
   if(el)paintChatBubble(msg.ownerUid,el);
 }
-function applyChatChanges(snap){
-  snap.docChanges().forEach(function(change){
-    if(change.type==="removed"){removeChatBubble(change.doc.id);return}
-    if(change.type!=="added")return;
-    var m=Object.assign({},change.doc.data(),{id:change.doc.id});
-    // Do not replay earlier history when opening the page or backfilling after a deletion.
-    var age=Date.now()+serverOffset-Number(m.createdAtMs);
-    if(Number(m.createdAtMs)>=chatEnteredAt+serverOffset&&age>=-2000&&age<CHAT_BUBBLE_MS)showChatBubble(m);
-  });
-}
 async function deleteChatMessage(id){
-  if(!isTeacher||!cloud.ready||chatDeleteBusy)return;
+  if(!isTeacher||!realtime.connected||chatDeleteBusy)return;
   if(!confirm("이 채팅을 모든 접속자의 기록에서 삭제할까요?"))return;
   chatDeleteBusy=true;
   try{
-    await cloud.museumRef.collection("messages").doc(sanitizeId(id)).delete();
+    if(!realtimeSend({type:"deleteChat",id:id}))throw new Error("WebSocket disconnected");
     removeChatBubble(id);
     state.messages=state.messages.filter(function(m){return m.id!==id});saveLocalData();renderChat();
     toast("채팅을 삭제했습니다.");
@@ -764,19 +760,14 @@ async function deleteChatMessage(id){
   finally{chatDeleteBusy=false}
 }
 async function clearChatHistory(){
-  if(!isTeacher||!cloud.ready||chatDeleteBusy)return;
+  if(!isTeacher||!realtime.connected||chatDeleteBusy)return;
   if(!confirm("지금까지의 채팅 기록을 모두 삭제할까요? 모든 접속자에게 적용되며 되돌릴 수 없습니다."))return;
   chatDeleteBusy=true;
   var btn=$("#clearChatBtn"),cutoff=Date.now()+serverOffset;
   if(btn){btn.disabled=true;btn.textContent="채팅 삭제 중…"}
   try{
-    while(true){
-      var snap=await cloud.museumRef.collection("messages").orderBy("createdAtMs").endAt(cutoff).limit(300).get({source:"server"});
-      if(snap.empty)break;
-      var batch=cloud.db.batch();snap.docs.forEach(function(d){batch.delete(d.ref)});
-      await batch.commit();
-      snap.docs.forEach(function(d){removeChatBubble(d.id)});
-    }
+    if(!realtimeSend({type:"clearChat",cutoff:cutoff}))throw new Error("WebSocket disconnected");
+    state.messages.forEach(function(m){if(Number(m.createdAtMs)<=cutoff)removeChatBubble(m.id)});
     state.messages=state.messages.filter(function(m){return m.createdAtMs>cutoff});
     saveLocalData();renderChat();toast("채팅 기록을 모두 삭제했습니다.");
   }catch(e){toast("채팅 삭제가 완료되지 않았습니다. 연결을 확인한 뒤 다시 눌러 주세요.")}
@@ -884,10 +875,10 @@ function showProfile(afterSave){
     profile.name=name;
     profile.group=normalizeGroup($("#profileGroup").value);
     profile.avatar=normalizeAvatar(draft);
-    if(!profile.studentId)profile.studentId=cloud.uid||uid("student-");
+    if(!profile.studentId)profile.studentId=cloud.uid||PLAYER_ID;
     saveProfileLocal(); updateProfileUI();
     try{await registerProfile()}catch(e){toast("프로필은 이 기기에 저장했습니다. 연결되면 자동 동기화됩니다.")}
-    closeModal(); refresh(false); schedulePresence(true);
+    closeModal(); refresh(false); sendRealtimeJoin(); schedulePresence(true);
     if(afterSave)afterSave();
   };
 }
@@ -915,13 +906,13 @@ function showHelp(){
 }
 function showConnectionHelp(){
   modalState={type:"connection"};
-  var detail=cloud.error?'<div class="notice warn" style="margin-top:10px"><b>확인 내용</b><br>'+esc(cloud.error)+'</div>':"";
+  var detail=realtime.error?'<div class="notice warn" style="margin-top:10px"><b>확인 내용</b><br>'+esc(realtime.error)+'</div>':"";
   modalShell("☁️ 실시간 연결 안내",
     '<div style="display:grid;gap:11px;font-size:14px;line-height:1.65">'+
-      '<div><b>'+(cloud.ready?"Firebase 실시간 연결 중":"현재는 이 기기 미리보기 모드")+'</b><br>'+
-      (cloud.ready?"전시물, 학생, 채팅, 접속자 위치가 같은 Firebase 프로젝트의 모든 기기에 동기화됩니다."
-                  :"Firebase Hosting 주소에서 열고 익명 로그인을 사용 설정하면 자동으로 실시간 모드가 됩니다.")+'</div>'+
-      '<div>배포 묶음의 <b>ANTIGRAVITY_DEPLOY.md</b> 순서대로 설정하면 별도의 키 입력 없이 연결됩니다.</div>'+
+      '<div><b>'+(realtime.connected?"Cloudflare 실시간 연결 중":"실시간 서버에 다시 연결하는 중")+'</b><br>'+
+      (realtime.connected?"접속자, 캐릭터 위치, 채팅이 Durable Objects WebSocket으로 즉시 동기화됩니다."
+                          :"네트워크가 복구되면 자동으로 다시 연결됩니다.")+'</div>'+
+      '<div><b>'+(cloud.ready?"Firebase 데이터 기능 연결됨":"Firebase 데이터 기능은 미리보기 모드")+'</b><br>전시물·학생·설정·첨부파일은 기존 Firebase Auth, Firestore, Storage 코드를 단계적으로 유지합니다.</div>'+
     '</div>'+detail+
     '<div class="modal-actions"><button class="btn primary" data-close-modal>확인</button></div>',true);
 }
@@ -1120,20 +1111,14 @@ function showAdminLogin(){
 async function teacherSignIn(){
   var btn=$("#googleLoginBtn"), errBox=$("#loginError");
   if(!cloud.ready||!window.firebase||!firebase.auth){
-    if(errBox){errBox.classList.remove("hidden");errBox.textContent="Firebase에 연결된 뒤에 로그인할 수 있습니다. 배포된 Hosting 주소에서 열어 주세요."}
+    if(errBox){errBox.classList.remove("hidden");errBox.textContent="Firebase Auth가 설정된 배포에서 교사 로그인을 사용할 수 있습니다."}
     return;
   }
   if(btn){btn.disabled=true;btn.textContent="로그인 창을 여는 중…"}
   if(errBox)errBox.classList.add("hidden");
   var auth=firebase.auth();
   var provider=new firebase.auth.GoogleAuthProvider();
-  var previousUid=cloud.uid;
-  if(previousUid)OWN_UIDS.add(previousUid);
   provider.setCustomParameters({prompt:"select_account",login_hint:TEACHER_EMAILS[0]});
-  presencePaused=true;
-  clearTimeout(presenceTimer);presenceTimer=0;
-  // Start cleanup without awaiting it. The popup opens in the click handler.
-  var cleanup=cleanupPresence(presenceRef);
   try{
     var cred;
     try{
@@ -1142,11 +1127,9 @@ async function teacherSignIn(){
         : await auth.signInWithPopup(provider);
     }catch(linkErr){
       if(linkErr&&(linkErr.code==="auth/credential-already-in-use"||linkErr.code==="auth/email-already-in-use")&&linkErr.credential){
-        await cleanup;
         cred=await auth.signInWithCredential(linkErr.credential);
       }else throw linkErr;
     }
-    await cleanup;
     var user=cred.user||auth.currentUser;
     await user.getIdToken(true);
     await user.reload();
@@ -1168,33 +1151,21 @@ async function teacherSignIn(){
     if(errBox){errBox.classList.remove("hidden");errBox.textContent=msg}
     if(btn){btn.disabled=false;btn.textContent="구글 계정으로 로그인"}
   }finally{
-    await cleanup;
-    presencePaused=false;
     var current=auth.currentUser;
     isTeacher=!!(current&&current.emailVerified&&emailAllowed(current.email));
     if(current){
-      if(previousUid!==current.uid){
-        SESSION_ID="tab-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,12);
-        state.presence=state.presence.filter(function(p){return p.uid!==previousUid});
-      }
       cloud.uid=current.uid;cloud.email=(current.email||"").toLowerCase();
-      OWN_UIDS.add(current.uid);
       cloud.unsubs.splice(0).forEach(function(off){off()});
       attachCloudListeners();
-      initPresence();
       registerProfile().catch(function(e){console.warn("프로필 동기화",e)});
       renderPresence();updateProfileUI();
       if(isTeacher)showAdminPanel();
     }else{
-      stopPresenceListeners();cloud.ready=false;
-      setSyncStatus("error","새로 고침 후 다시 연결해 주세요.");
+      cloud.ready=false;cloud.error="Firebase 인증 연결이 종료되었습니다.";
     }
   }
 }
 async function teacherSignOut(){
-  presencePaused=true;
-  stopPresenceListeners();
-  await cleanupPresence(presenceRef);
   await firebase.auth().signOut();
   location.reload();
 }
@@ -1229,7 +1200,7 @@ function showAdminPanel(){
         '<button class="btn" id="exportBtn">JSON 백업</button>'+
         '<button class="btn danger" id="resetBtn">전체 초기화</button>'+
         '<button class="btn danger" id="clearChatBtn">채팅 기록 전체 삭제</button></div>'+
-        '<div class="notice" style="margin-top:10px">'+(cloud.ready?"현재 Firestore와 실시간 동기화 중입니다.":"현재 이 기기 미리보기 데이터만 사용 중입니다.")+'</div></section>'+
+        '<div class="notice" style="margin-top:10px">'+(cloud.ready?"전시물·학생·설정은 Firestore와 동기화되고, 접속자·위치·채팅은 Cloudflare와 동기화됩니다.":"전시 데이터는 이 기기 미리보기이며, 접속자·위치·채팅은 Cloudflare와 동기화됩니다.")+'</div></section>'+
       '<section class="admin-box full"><h3>🧑‍🎓 학생 관리 <small>'+students.length+'명</small></h3>'+
         '<div class="table-wrap" style="margin-top:10px"><table><thead><tr><th>학생</th><th>모둠</th><th>작품 수</th><th>상태</th><th>관리</th></tr></thead><tbody>'+studentRows+'</tbody></table></div></section>'+
       '<section class="admin-box full"><h3>🖼️ 전시물 관리</h3><div class="table-wrap"><table><thead><tr><th>제목</th><th>전시관</th><th>작성자</th><th>파일</th><th>상태</th><th>관리</th></tr></thead><tbody>'+exhibitRows+'</tbody></table></div></section>'+
@@ -1286,18 +1257,20 @@ async function resetAllData(){
   saveLocalData(); refresh(true); closeModal(); toast("초기화했습니다.");
 }
 async function sendChat(text){
-  if(!cloud.ready){toast("서버 연결 후 대화할 수 있습니다.");return}
+  if(!realtime.connected){toast("실시간 서버 연결 후 대화할 수 있습니다.");return}
   text=String(text||"").trim(); if(!text)return;
-  ensureProfile(async function(){
+  ensureProfile(function(){
     $("#chatInput").value="";
-    var msg={id:uid("msg-"),name:profile.name,text:text.slice(0,120),ownerUid:cloud.uid||"local",createdAtMs:Date.now()+serverOffset};
+    var msg={id:uid("msg-"),name:profile.name,text:text.slice(0,120),ownerUid:ownRealtimeId(),createdAtMs:Date.now()+serverOffset};
+    state.messages=state.messages.filter(function(m){return m.id!==msg.id}).concat([msg]).slice(-40);
+    saveLocalData();renderChat();
     showChatBubble(msg);
 
-    if(cloud.ready){
-      try{
-        var copy=Object.assign({},msg); delete copy.id;
-        await cloud.museumRef.collection("messages").doc(sanitizeId(msg.id)).set(copy);
-      }catch(e){removeChatBubble(msg.id);if(!$("#chatInput").value)$("#chatInput").value=msg.text;toast("채팅 전송에 실패했습니다.")}
+    if(!realtimeSend({type:"chat",clientMessageId:msg.id,text:msg.text})){
+      removeChatBubble(msg.id);
+      state.messages=state.messages.filter(function(m){return m.id!==msg.id});renderChat();
+      if(!$("#chatInput").value)$("#chatInput").value=msg.text;
+      toast("채팅 전송에 실패했습니다.");
     }
   });
 }
@@ -1318,26 +1291,32 @@ function maybeWritePresence(){
   schedulePresence(false);
 }
 function schedulePresence(force,reaction){
-  if(!cloud.ready||!profile.name)return;
+  if(!realtime.connected||!profile.name)return;
   var wait=force?0:Math.max(0,PRESENCE_MIN_INTERVAL-(Date.now()-lastPresenceWrite));
   if(presenceTimer&&!force)return;
   clearTimeout(presenceTimer);
   presenceTimer=setTimeout(function(){presenceTimer=0;writePresence(reaction)},wait);
 }
 async function writePresence(reaction){
-  if(!cloud.ready||!profile.name||!presenceConnected||!presenceRef||presencePaused)return false;
-  lastPresenceWrite=Date.now();
-  lastPresencePos={x:pos.x,y:pos.y};
-  var data={uid:cloud.uid,sessionId:SESSION_ID,studentId:profile.studentId||"",name:profile.name,group:profile.group||"",avatar:normalizeAvatar(profile.avatar),
-    facing:facing,x:Number(pos.x.toFixed(2)),y:Number(pos.y.toFixed(2)),lastSeenMs:firebase.database.ServerValue.TIMESTAMP};
-  if(reaction){data.reaction=reaction;data.reactionAt=Date.now()}
-  try{await presenceRef.update(data);return true}catch(e){setSyncStatus("error","이동 연결 확인 필요",e);return false}
+  if(!realtime.connected||!realtime.joined||!profile.name||!presenceConnected)return false;
+  var sent=true;
+  if(reaction)sent=realtimeSend({type:"reaction",reaction:reaction})&&sent;
+  realtime.sequence++;
+  sent=realtimeSend({
+    type:"move",sequence:realtime.sequence,
+    x:Number(pos.x.toFixed(2)),y:Number(pos.y.toFixed(2)),facing:facing,
+    avatar:normalizeAvatar(profile.avatar)
+  })&&sent;
+  if(sent){
+    lastPresenceWrite=Date.now();
+    lastPresencePos={x:pos.x,y:pos.y};
+  }
+  return sent;
 }
 
 /* ══════════ Firebase ══════════ */
 async function initFirebase(){
-  setSyncStatus("","Firebase 연결 중");
-  if(!window.firebase||!firebase.apps||!firebase.apps.length)throw new Error("Firebase Hosting 주소에서 열면 실시간 연결이 시작됩니다.");
+  if(!window.firebase||!firebase.apps||!firebase.apps.length)throw new Error("Firebase Auth·Firestore·Storage SDK가 설정되지 않았습니다.");
   var auth=firebase.auth();
   await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
   await new Promise(function(resolve){var off=auth.onAuthStateChanged(function(){off();resolve()})});
@@ -1348,22 +1327,18 @@ async function initFirebase(){
     user=res.user;
   }
   cloud.uid=user.uid;
-  OWN_UIDS.add(user.uid);
   cloud.email=(user.email||"").toLowerCase();
   isTeacher=emailAllowed(cloud.email)&&user.emailVerified;
   cloud.db=firebase.firestore();
   cloud.storage=firebase.storage();
   cloud.museumRef=cloud.db.collection("museums").doc(MUSEUM_ID);
   cloud.ready=true;
+  cloud.error="";
   attachCloudListeners();
-  initPresence();
-  setSyncStatus("","접속자 연결 중");
   updateProfileUI();
-  schedulePresence(true);
-  heartbeatTimer=setInterval(function(){schedulePresence(true)},PRESENCE_HEARTBEAT);
 }
 function attachCloudListeners(){
-  var onErr=function(e){console.warn(e);setSyncStatus("error","동기화 확인 필요",e)};
+  var onErr=function(e){console.warn(e);cloud.error=e?(e.message||String(e)):"Firebase 데이터 동기화 오류"};
   cloud.unsubs.push(cloud.museumRef.onSnapshot(function(snap){
     if(snap.exists)state.settings=Object.assign({},DEFAULT_SETTINGS,snap.data()||{});
     saveLocalData(); refresh(false);
@@ -1376,71 +1351,165 @@ function attachCloudListeners(){
     state.students=snap.docs.map(function(d){return Object.assign({},d.data(),{id:d.id})});
     saveLocalData(); refresh(false);
   },onErr));
-  cloud.unsubs.push(cloud.museumRef.collection("messages").orderBy("createdAtMs","desc").limit(40).onSnapshot(function(snap){
-    applyChatChanges(snap);
-    state.messages=snap.docs.map(function(d){return Object.assign({},d.data(),{id:d.id})});
-    saveLocalData(); renderChat();
-  },onErr));
 
 }
 
 
-function stopPresenceListeners(){
-  presenceGeneration++;
-  presenceConnected=false;
-  clearTimeout(presenceTimer);presenceTimer=0;
-  presenceUnsubs.splice(0).forEach(function(off){off()});
+function realtimeUrl(){
+  var protocol=location.protocol==="https:"?"wss:":"ws:";
+  return protocol+"//"+location.host+"/ws?room="+encodeURIComponent(MUSEUM_ID);
 }
-function cleanupPresence(ref){
-  // Presence cleanup must never prevent opening Google's popup.
-  if(!ref)return Promise.resolve();
-  var timer;
-  var cleanup=ref.remove().catch(function(e){console.warn("접속 정보 정리 지연",e)});
-  return Promise.race([cleanup,new Promise(function(resolve){timer=setTimeout(resolve,1800)})])
-    .then(function(){clearTimeout(timer)});
+function realtimeSend(data){
+  var ws=realtime.socket;
+  if(!ws||ws.readyState!==WebSocket.OPEN)return false;
+  if(data.type==="move"&&ws.bufferedAmount>65536)return false;
+  try{ws.send(JSON.stringify(data));return true}catch(e){return false}
 }
-function initPresence(){
-  stopPresenceListeners();
-  var generation=presenceGeneration;
-  var db=firebase.database();
-  var room=db.ref("museumPresence/"+MUSEUM_ID);
-  presenceRef=room.child(SESSION_ID);
-  var myRef=presenceRef;
-  var peers={};
-  function onError(e){
-    if(generation!==presenceGeneration)return;
-    setSyncStatus("error","접속자 연결 확인 필요",e);
-  }
-  function listen(ref,event,fn){
-    ref.on(event,fn,onError);
-    presenceUnsubs.push(function(){ref.off(event,fn)});
-  }
-  listen(db.ref(".info/serverTimeOffset"),"value",function(s){serverOffset=Number(s.val())||0});
-  listen(db.ref(".info/connected"),"value",async function(s){
-    if(generation!==presenceGeneration)return;
-    presenceConnected=false;
-    if(s.val()!==true){setSyncStatus("error","연결 복구 중");return}
-    try{
-      presenceDisconnect=myRef.onDisconnect();
-      // Queue deletion BEFORE publishing the first presence record.
-      await presenceDisconnect.remove();
-      if(generation!==presenceGeneration||presencePaused)return;
-      presenceConnected=true;
-      var saved=await writePresence();
-      if(generation===presenceGeneration&&(saved||!profile.name))setSyncStatus("online","실시간 연결");
-    }catch(e){onError(e)}
+function normalizeRealtimePlayer(raw){
+  if(!raw||typeof raw!=="object")return null;
+  var id=String(raw.id||raw.uid||"").replace(/[^a-zA-Z0-9_-]/g,"").slice(0,96);
+  if(!id)return null;
+  var x=Number(raw.x),y=Number(raw.y),seen=Number(raw.lastSeenMs);
+  return {
+    id:id,uid:id,sessionId:String(raw.sessionId||"").slice(0,96),
+    studentId:String(raw.studentId||"").slice(0,30),name:String(raw.name||"학생").slice(0,20),group:String(raw.group||"").slice(0,20),
+    avatar:normalizeAvatar(raw.avatar),facing:/^(up|down|left|right)$/.test(raw.facing)?raw.facing:"down",
+    x:Number.isFinite(x)?Math.max(0,Math.min(100,x)):50,y:Number.isFinite(y)?Math.max(0,Math.min(100,y)):86,
+    lastSeenMs:Number.isFinite(seen)?seen:Date.now()+serverOffset,sequence:Number(raw.sequence)||0
+  };
+}
+function replaceRealtimePlayers(players){
+  var byId=new Map();
+  (Array.isArray(players)?players:[]).forEach(function(raw){
+    var player=normalizeRealtimePlayer(raw);
+    if(player&&player.uid!==ownRealtimeId())byId.set(player.uid,player);
   });
-  function renderPeers(){state.presence=Object.keys(peers).map(function(k){return peers[k]});renderPresence()}
-  function changed(s){
-    if(generation!==presenceGeneration)return;
-    peers[s.key]=s.val();renderPeers();
+  state.presence=Array.from(byId.values());
+  renderPresence();
+}
+function upsertRealtimePlayer(raw,force){
+  var player=normalizeRealtimePlayer(raw);
+  if(!player||player.uid===ownRealtimeId())return;
+  var index=state.presence.findIndex(function(item){return item&&item.uid===player.uid});
+  if(index<0)state.presence.push(player);
+  else{
+    var current=state.presence[index];
+    if(!force&&Number(player.sequence)<Number(current.sequence||0))return;
+    state.presence[index]=Object.assign({},current,player);
   }
-  listen(room,"child_added",changed);
-  listen(room,"child_changed",changed);
-  listen(room,"child_removed",function(s){
-    if(generation!==presenceGeneration)return;
-    delete peers[s.key];renderPeers();
+  renderPresence();
+}
+function removeRealtimePlayer(id){
+  id=String(id||"");
+  state.presence=state.presence.filter(function(player){return player&&player.uid!==id});
+  var bubble=chatBubbles.get(id);if(bubble)removeChatBubble(bubble.id);
+  renderPresence();
+}
+function receiveRealtimeChat(raw){
+  if(!raw||typeof raw!=="object")return;
+  var message={
+    id:String(raw.id||"").replace(/[^a-zA-Z0-9_-]/g,"").slice(0,96),
+    ownerUid:String(raw.ownerUid||"").replace(/[^a-zA-Z0-9_-]/g,"").slice(0,96),
+    name:String(raw.name||"학생").slice(0,20),text:String(raw.text||"").slice(0,120),createdAtMs:Number(raw.createdAtMs)||Date.now()+serverOffset
+  };
+  if(!message.id||!message.ownerUid||!message.text)return;
+  state.messages=state.messages.filter(function(item){return item.id!==message.id}).concat([message])
+    .sort(function(a,b){return (a.createdAtMs||0)-(b.createdAtMs||0)}).slice(-40);
+  saveLocalData();renderChat();showChatBubble(message);
+}
+function handleRealtimeMessage(event){
+  var data;
+  try{data=JSON.parse(String(event.data||""))}catch(e){return}
+  if(!data||typeof data!=="object")return;
+  if(data.type==="welcome"){
+    realtime.id=String(data.id||PLAYER_ID);realtime.joined=true;realtime.sequence=0;
+    var serverTime=Number(data.serverTimeMs);if(Number.isFinite(serverTime))serverOffset=serverTime-Date.now();
+    replaceRealtimePlayers(data.players);
+    state.messages=(Array.isArray(data.messages)?data.messages:[]).map(function(message){
+      return {id:String(message.id||""),ownerUid:String(message.ownerUid||""),name:String(message.name||"학생").slice(0,20),text:String(message.text||"").slice(0,120),createdAtMs:Number(message.createdAtMs)||0};
+    }).filter(function(message){return message.id&&message.ownerUid&&message.text}).slice(-40);
+    state.messages.forEach(function(message){chatSeenIds.add(message.id)});
+    saveLocalData();renderChat();renderPresence();schedulePresence(true);
+    return;
+  }
+  if(data.type==="playerJoined"){upsertRealtimePlayer(data.player,true);return}
+  if(data.type==="move"){upsertRealtimePlayer(data.player,false);return}
+  if(data.type==="playerLeft"){removeRealtimePlayer(data.id);return}
+  if(data.type==="chat"){receiveRealtimeChat(data.message);return}
+  if(data.type==="chatDeleted"){
+    removeChatBubble(String(data.id||""));
+    state.messages=state.messages.filter(function(message){return message.id!==String(data.id||"")});saveLocalData();renderChat();return;
+  }
+  if(data.type==="chatCleared"){
+    var cutoff=Number(data.cutoff)||Date.now()+serverOffset;
+    state.messages.forEach(function(message){if(Number(message.createdAtMs)<=cutoff)removeChatBubble(message.id)});
+    state.messages=state.messages.filter(function(message){return Number(message.createdAtMs)>cutoff});saveLocalData();renderChat();return;
+  }
+  if(data.type==="reaction"){
+    if(String(data.id||"")===ownRealtimeId())return;
+    var player=state.presence.find(function(item){return item&&item.uid===String(data.id||"")});
+    if(player){player.reaction=String(data.reaction||"").slice(0,10);player.reactionAt=Number(data.reactionAt)||Date.now();renderPresence()}
+    return;
+  }
+  if(data.type==="replaced"){
+    realtime.manualClose=true;
+    setSyncStatus("error","다른 탭에서 이 캐릭터로 접속 중",new Error("같은 브라우저의 새 연결이 기존 연결을 대체했습니다."));
+  }
+}
+function sendRealtimeJoin(){
+  if(!profile.name||!realtime.connected)return false;
+  realtime.joined=false;
+  return realtimeSend({
+    type:"join",playerId:PLAYER_ID,sessionId:SESSION_ID,studentId:profile.studentId||PLAYER_ID,
+    name:profile.name,group:profile.group||"",avatar:normalizeAvatar(profile.avatar),
+    facing:facing,x:Number(pos.x.toFixed(2)),y:Number(pos.y.toFixed(2))
   });
+}
+function scheduleRealtimeReconnect(){
+  if(realtime.manualClose||realtime.retryTimer)return;
+  realtime.retries++;
+  var delay=Math.min(REALTIME_RECONNECT_MAX,500*Math.pow(1.8,Math.min(7,realtime.retries-1)))+Math.random()*250;
+  realtime.retryTimer=setTimeout(function(){realtime.retryTimer=0;connectRealtime()},delay);
+}
+function connectRealtime(){
+  if(realtime.manualClose)return;
+  var current=realtime.socket;
+  if(current&&(current.readyState===WebSocket.OPEN||current.readyState===WebSocket.CONNECTING))return;
+  clearTimeout(realtime.retryTimer);realtime.retryTimer=0;
+  var generation=++realtime.generation,ws;
+  setSyncStatus("","실시간 서버 연결 중");
+  try{ws=new WebSocket(realtimeUrl())}
+  catch(e){setSyncStatus("error","실시간 서버 재연결 중",e);scheduleRealtimeReconnect();return}
+  realtime.socket=ws;
+  ws.onopen=function(){
+    if(generation!==realtime.generation||realtime.socket!==ws)return;
+    realtime.connected=true;realtime.joined=false;presenceConnected=true;realtime.retries=0;realtime.error="";
+    clearInterval(heartbeatTimer);heartbeatTimer=setInterval(function(){schedulePresence(true)},PRESENCE_HEARTBEAT);
+    setSyncStatus("online","실시간 연결");sendRealtimeJoin();
+  };
+  ws.onmessage=handleRealtimeMessage;
+  ws.onerror=function(){if(generation===realtime.generation)realtime.error="WebSocket 연결 오류"};
+  ws.onclose=function(event){
+    if(generation!==realtime.generation||realtime.socket!==ws)return;
+    realtime.socket=null;realtime.connected=false;realtime.joined=false;presenceConnected=false;
+    clearInterval(heartbeatTimer);heartbeatTimer=0;clearTimeout(presenceTimer);presenceTimer=0;
+    state.presence=[];renderPresence();
+    if(realtime.manualClose)return;
+    var reason=event&&event.reason?event.reason:"WebSocket 연결이 종료되었습니다.";
+    setSyncStatus("error","실시간 서버 재연결 중",new Error(reason));scheduleRealtimeReconnect();
+  };
+}
+function disconnectRealtime(manual){
+  realtime.manualClose=!!manual;realtime.generation++;
+  clearTimeout(realtime.retryTimer);realtime.retryTimer=0;clearTimeout(presenceTimer);presenceTimer=0;
+  clearInterval(heartbeatTimer);heartbeatTimer=0;
+  var ws=realtime.socket;realtime.socket=null;realtime.connected=false;realtime.joined=false;presenceConnected=false;
+  if(ws&&(ws.readyState===WebSocket.OPEN||ws.readyState===WebSocket.CONNECTING)){try{ws.close(1000,"page closed")}catch(e){}}
+  state.presence=[];renderPresence();
+}
+function initRealtime(){
+  realtime.manualClose=false;
+  connectRealtime();
 }
 
 /* ══════════ 입력 ══════════ */
@@ -1567,9 +1636,13 @@ function bindControls(){
   });
   window.addEventListener("pagehide",function(){
     saveProfileLocal();
-    if(presenceRef)presenceRef.remove().catch(function(){});
+    disconnectRealtime(true);
   });
-  window.addEventListener("pageshow",function(){schedulePresence(true)});
+  window.addEventListener("pageshow",function(){
+    realtime.manualClose=false;
+    if(!realtime.connected)connectRealtime();
+    else schedulePresence(true);
+  });
   document.addEventListener("visibilitychange",function(){
     if(!document.hidden){schedulePresence(true)}
     if(document.hidden){keysDown={};updateKeyInput();stickInput.x=0;stickInput.y=0;saveProfileLocal()}
@@ -1592,8 +1665,11 @@ async function boot(){
   placeAvatar();
   if(!atlasReady)spriteWaiters.push(function(){updateProfileUI();refresh(false)});
   requestAnimationFrame(loop);
-  try{await initFirebase()}
-  catch(e){console.warn(e);setSyncStatus("error","서버 연결 안 됨 · 눌러서 확인",e)}
+  initRealtime();
+  if(window.firebase&&firebase.apps&&firebase.apps.length){
+    try{await initFirebase()}
+    catch(e){console.warn(e);cloud.error=e?(e.message||String(e)):"Firebase 데이터 연결 오류"}
+  }else cloud.error="Firebase Auth·Firestore·Storage SDK가 이 배포에 설정되지 않아 전시 데이터는 기기 미리보기를 사용합니다.";
   $("#loadingScreen").style.opacity="0";
   setTimeout(function(){$("#loadingScreen").classList.add("hidden")},380);
   if(!profile.name)setTimeout(function(){showProfile()},260);

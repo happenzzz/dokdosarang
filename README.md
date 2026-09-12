@@ -11,14 +11,26 @@
 - `wrangler.jsonc`: Cloudflare 설정
 
 ## 현재 상태
-기존 화면/자산/게임 코드는 보존되어 있습니다. Worker와 Durable Object 실시간 서버 뼈대도 추가했습니다.
+기존 화면, 독도 지도, 캐릭터 이미지, 이동 물리, 충돌 마스크, 전시관 입구와 길찾기는 그대로 보존되어 있습니다.
 
-다만 기존 `game.js` 내부의 Firebase Auth / Firestore / Storage / Realtime Database 호출은 아직 Cloudflare API로 완전히 교체되지 않았습니다. 따라서 Cloudflare 배포 구조는 준비됐지만, 교사 Google 로그인·작품 DB·파일 업로드·기존 실시간 접속 기능의 완전한 이전은 다음 단계에서 Codex로 교체해야 합니다.
+- 학생 접속/퇴장, 캐릭터 위치·방향·아바타, 반응, 채팅: Cloudflare Durable Objects + WebSocket
+- 최근 채팅 40개: Durable Object storage
+- 교사 Google 로그인: 기존 Firebase Authentication 코드 유지
+- 박물관 설정·전시물·학생 명부: 기존 Firestore 코드 유지
+- 작품 첨부파일: 기존 Firebase Storage 코드 유지
+
+Cloudflare 정적 배포에는 현재 Firebase SDK/config가 포함되어 있지 않으므로, Firebase 쪽 기능은 별도 설정 전까지 기기 미리보기로 동작합니다. 실시간 접속자·이동·채팅은 Firebase와 독립적으로 Cloudflare에서 동작합니다.
 
 ## 실행
 ```powershell
 npm.cmd install
 npx.cmd wrangler dev
+```
+
+검증:
+
+```powershell
+npm.cmd run check
 ```
 
 ## 배포
@@ -27,5 +39,5 @@ npx.cmd wrangler login
 npx.cmd wrangler deploy
 ```
 
-## Codex에게 다음 단계로 시킬 권장 요청
-`이 저장소는 기존 Firebase 기반 독도울림을 Cloudflare로 이전 중이다. public/game.js 안의 Firebase Authentication, Firestore, Storage, Realtime Database 의존성을 분석한 뒤, 캐릭터 실시간 이동/접속자/채팅은 src/index.ts의 Durable Object WebSocket을 사용하도록 완전히 교체하고, 작품/학생/설정 데이터는 Cloudflare D1, 첨부파일은 R2를 사용하도록 순차적으로 이전해라. 기존 UI, 맵, 캐릭터, 충돌 영역, 이동 로직은 변경하지 말고 기능 회귀가 없도록 작업해라.`
+## 다음 전환 단계
+Firebase SDK/config를 연결해 남겨 둔 Auth·Firestore·Storage 기능을 그대로 사용할 수 있습니다. Firebase를 완전히 제거하려면 교사 인증, 작품/학생/설정 데이터, 첨부파일을 각각 별도 단계로 설계해 D1/R2 등으로 옮겨야 합니다.

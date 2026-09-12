@@ -4,12 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "wrangler dev",
+    "build": "wrangler deploy --dry-run",
     "deploy": "wrangler deploy",
-    "cf-typegen": "wrangler types"
+    "cf-typegen": "wrangler types",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm run build && node --check public/game.js"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "latest",
-    "typescript": "latest",
-    "wrangler": "latest"
+    "@cloudflare/workers-types": "5.20260911.1",
+    "typescript": "7.0.2",
+    "wrangler": "4.131.1"
   }
 }
